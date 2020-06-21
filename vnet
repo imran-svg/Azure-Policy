@@ -1,0 +1,48 @@
+  "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microland.Network/virtualNetworks/subnets"
+          },
+          {
+            "not": {
+              "field": "name",
+              "equals": "GatewaySubnet"
+            }
+          },
+          {
+            "not": {
+              "field": "name",
+              "equals": "AzureFirewallSubnet"
+            }
+          },
+          {
+            "not": {
+              "field": "name",
+              "equals": "NetAppSubnet"
+            }
+          },
+          {
+            "not": {
+              "field": "name",
+              "equals": "AzureBastionSubnet"
+            }
+          },
+          {
+            "not": {
+              "field": "name",
+              "equals": "AppGatewaySubnet"
+            }
+          },
+          {
+            "field": "Microland .Network/virtualNetworks/subnets/networkSecurityGroup.id",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
